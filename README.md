@@ -38,9 +38,17 @@ Muốn gọi thẳng:
 /plugin install thanhtungpfiev-skills@thanhtungpfiev-skills
 ```
 
-Trên máy dùng để **sửa** skill, trỏ marketplace vào bản clone local thay vì GitHub — sửa
-file là có hiệu lực ngay, không phải push rồi update plugin:
+Trên máy dùng để **sửa** skill, trỏ marketplace vào bản clone local thay vì GitHub — khỏi
+phải push mới thử được:
 
 ```
 /plugin marketplace add D:/PrivateDocuments/claude-skills
+```
+
+Lưu ý: kể cả với nguồn local, Claude Code vẫn **copy** file vào
+`~/.claude/plugins/cache/`, không đọc thẳng thư mục nguồn. Sửa `SKILL.md` xong phải đẩy
+sang cache thì mới có hiệu lực:
+
+```
+/plugin marketplace update thanhtungpfiev-skills
 ```
