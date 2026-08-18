@@ -1,0 +1,11 @@
+{
+  "name": "thanhtungpfiev-skills",
+  "description": "Hai skill dùng chung cho mọi repo: viết commit message theo khung Problem → Solution → Implications, và chọn đúng hình thức cho danh sách trong Markdown",
+  "version": "1.0.0",
+  "author": {
+    "name": "Dao Thanh Tung"
+  },
+  "license": "MIT",
+  "keywords": ["commit", "git", "markdown", "writing", "conventions"],
+  "skills": ["./skills/commit", "./skills/list-formatting"]
+}

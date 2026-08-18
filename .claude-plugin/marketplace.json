@@ -1,0 +1,24 @@
+{
+  "name": "thanhtungpfiev-skills",
+  "id": "thanhtungpfiev-skills",
+  "owner": {
+    "name": "Dao Thanh Tung"
+  },
+  "metadata": {
+    "description": "Skill cá nhân của thanhtungpfiev cho Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "thanhtungpfiev-skills",
+      "source": "./",
+      "description": "commit: tách commit một ý và viết message theo Problem → Solution → Implications. list-formatting: chọn giữa nối ngang bằng `·`, bullet list, hay `<br>` trong ô bảng",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dao Thanh Tung"
+      },
+      "keywords": ["commit", "git", "markdown", "writing", "conventions"],
+      "category": "workflow"
+    }
+  ]
+}
