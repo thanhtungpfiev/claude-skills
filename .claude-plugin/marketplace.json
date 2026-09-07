@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Skill cá nhân của thanhtungpfiev cho Claude Code",
-    "version": "1.3.0"
+    "version": "1.3.1"
   },
   "plugins": [
     {
       "name": "thanhtungpfiev-skills",
       "source": "./",
       "description": "commit: tách commit một ý và viết message theo Problem → Solution → Implications. list-formatting: chọn giữa nối ngang bằng `·`, bullet list, hay `<br>` trong ô bảng. diagram-rules: luật màu, font và kiểm chứng khi vẽ sơ đồ SVG bằng diagram-design. toc-builder: dựng/chuẩn hoá mục lục note nhiều chương, kiểm anchor wikilink gãy. raw-to-note: chắt lọc khối dữ liệu thô (chat Teams, tài liệu web, transcript) thành note kiến thức rồi xoá bản thô",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "author": {
         "name": "Dao Thanh Tung"
       },

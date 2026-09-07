@@ -1,7 +1,7 @@
 {
   "name": "thanhtungpfiev-skills",
   "description": "Năm skill dùng chung cho mọi repo: viết commit message theo khung Problem → Solution → Implications, chọn đúng hình thức cho danh sách trong Markdown, luật màu/font khi vẽ sơ đồ SVG, dựng/chuẩn hoá mục lục note nhiều chương, và chắt lọc dữ liệu thô dán vào note thành note kiến thức",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": {
     "name": "Dao Thanh Tung"
   },

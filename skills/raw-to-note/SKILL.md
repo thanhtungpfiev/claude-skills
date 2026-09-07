@@ -21,13 +21,20 @@ toàn bộ trình tự của skill này:
 Đảo thứ tự, hay gộp bước cuối vào bước viết, là cách duy nhất để mất dữ liệu ở
 đây. Không có bước nào tốn thời gian, chỉ có bước bị bỏ.
 
-## Ba luật cứng
+## Bốn luật cứng
 
 1. **Chưa chốt được định danh nguồn thì chưa xoá dòng thô nào.** Xem Bước 0.
 2. **Chỉ xoá thô sau khi note đích đã ghi xong và đọc lại một lượt.** Không xoá
    "dọn đường" trước cho dễ nhìn.
 3. **Không tự sửa thứ nghe/đọc không rõ.** Đánh `❓` và để nguyên chữ như nguồn.
    Xem Bước 4.
+4. **Kiểm được thì kiểm, đừng chép nguyên.** Đường dẫn, tên file, tên repo, số
+   dòng — nếu có cách mở thứ thật (repo trên Bitbucket, trang web, thư mục trên
+   máy) thì đối chiếu trước khi ghi. Nguồn viết sai thì **ghi theo thực tế và
+   nói ra chỗ lệch**; không có cách kiểm thì mới `❓`.
+
+Luật 3 và 4 không đá nhau: 3 cấm sửa **theo trí nhớ**, 4 buộc sửa **theo bằng
+chứng vừa mở ra xem**. Ranh giới là bạn có mở thứ thật ra hay không.
 
 ## Bước 0 — Nguồn này tra ngược bằng gì?
 
@@ -50,7 +57,7 @@ Ba loại hay gặp. Cột thứ ba là phần dễ mất nhất, đọc kỹ tr
 
 | Loại | Rác — cắt sạch | Giữ bằng mọi giá |
 |---|---|---|
-| **Chat Teams** | Dòng tên + timestamp, "Reacted with 👍", "1 reply", "Edited", chữ ký, phần quote lồng lặp lại nội dung đã có ở trên | **Ai** chốt quyết định — quyết định của người khác là dữ kiện có chủ thể, viết trống chủ ngữ là biến nó thành ý kiến của chính bạn.<br>Mọi lệnh, đường dẫn, tên biến, số hiệu ticket nguyên văn.<br>Câu hỏi chưa được trả lời — ghi lại kèm `❓`, đó là việc còn treo |
+| **Chat Teams** | Dòng tên + timestamp, "Reacted with 👍", "1 reply", "Edited", chữ ký, phần quote lồng lặp lại nội dung đã có ở trên.<br>**Ký tự vô hình**: Teams dán kèm non-breaking space (`U+00A0`) lẫn giữa các từ thường — nhìn y hệt dấu cách, nhưng mọi lệnh grep/khớp chuỗi trượt qua nó mà không báo gì. Xem Bước 5 | **Ai** chốt quyết định — quyết định của người khác là dữ kiện có chủ thể, viết trống chủ ngữ là biến nó thành ý kiến của chính bạn.<br>Mọi lệnh, đường dẫn, tên biến, số hiệu ticket nguyên văn.<br>Câu hỏi chưa được trả lời — ghi lại kèm `❓`, đó là việc còn treo |
 | **Transcript Udemy/YouTube** | Timestamp đầu dòng, từ đệm ("okay so", "right"), câu lặp lại y hệt, câu chào/quảng cáo khoá học | Tên API, tên lệnh, tên file hiện trên màn hình — **speech-to-text sai chính những chỗ này** (`flutter pub get` ra "flutter pop get"). Nghi ngờ thì `❓`, tuyệt đối không "sửa cho đúng" theo trí nhớ.<br>Thứ tự các bước trong demo — đó chính là nội dung |
 | **Web / Confluence / Docupedia** | Breadcrumb điều hướng, "Edit this page", "Last modified by", menu bên, footer, nút Export | Bảng — copy từ web hay vỡ cột; dựng lại bảng Markdown đủ cột **và** dòng ngăn cách `\|---\|`.<br>Link tương đối (`/display/SET/...`) — nối lại thành URL tuyệt đối, không thì nó gãy ngay khi rời trang gốc |
 
@@ -95,6 +102,15 @@ Rà đủ bốn thứ này trước khi động vào khối thô:
 - [ ] **Dòng nguồn có mặt** trong note đích, đúng định danh chốt ở Bước 0.
 - [ ] **Không còn rác sót**: grep note đích tìm `\d\d:\d\d`, "Reacted", "reply",
       "Edit this page". Sót một timestamp nghĩa là còn sót cả đoạn quanh nó.
+- [ ] **Không còn ký tự vô hình** — quét `U+00A0` trên cả note đích lẫn khối thô
+      sắp xoá. Quét bằng Python, đừng bằng grep: chính lệnh grep là thứ bị nó
+      đánh lừa.
+      ```bash
+      python -c "print([i+1 for i,l in enumerate(open('<note>.md',encoding='utf-8')) if chr(160) in l] or 'sach')"
+      ```
+- [ ] **Đường dẫn, tên file, tên repo đã đối chiếu với thứ thật** (luật cứng 4).
+      Chỗ nào chưa mở ra xem được thì phải còn `❓` — không có `❓` nghĩa là bạn
+      đang khẳng định đã kiểm.
 - [ ] **Bảng nào cũng có dòng ngăn cách** ngay dưới header, và **không có dòng
       trống giữa hai dòng của cùng một bảng** — Markdown đóng bảng tại dòng
       trống, phần sau đổ ra chữ thô kèm nguyên dấu `|`. Đọc file raw vẫn thấy
@@ -112,6 +128,8 @@ những `❓` nào còn treo, những `[[wikilink]]` nào trỏ note chưa tồn
 | "Xoá bớt rác trước cho dễ đọc rồi viết sau" | Đó là xoá trước khi có bản thay thế. Viết xong mới xoá. |
 | "Link nguồn chắc là cái URL này" | Chắc là ≠ đúng. Hỏi. |
 | "Chỗ này nó nói nhầm, sửa lại cho đúng" | Bạn đang sửa theo trí nhớ của mình, không theo nguồn. `❓`. |
+| "Đường dẫn thì cứ chép y nguyên là an toàn nhất" | Chép y nguyên một đường dẫn sai tạo ra note trông chuẩn mà làm theo là hỏng. Mở repo ra đối chiếu (luật cứng 4). |
+| "Grep không thấy gì, chắc sạch rồi" | Ký tự vô hình dán từ Teams làm grep trượt êm ru. Quét `U+00A0` bằng Python. |
 | "Ai nói câu này không quan trọng" | Với một quyết định thì chủ thể *là* nội dung. |
 | "Đoạn này chỉ là chào hỏi, cắt cả cụm cho nhanh" | Câu chốt hay nằm lẫn trong đoạn tán gẫu. Đọc hết rồi mới cắt. |
 | "Note kia cũng nói về cái này, nhưng tạo note mới gọn hơn" | Hai note cùng chủ đề rồi sẽ lệch nhau. Gộp. |
