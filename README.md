@@ -42,10 +42,11 @@ Muốn gọi thẳng:
 ```
 
 Trên máy dùng để **sửa** skill, trỏ marketplace vào bản clone local thay vì GitHub — khỏi
-phải push mới thử được:
+phải push mới thử được. Đường dẫn tuỳ máy, không phải quy ước cố định — mỗi máy tự
+`git clone` repo này vào đâu tuỳ ý, rồi trỏ đúng vào đó:
 
 ```
-/plugin marketplace add D:/PrivateDocuments/claude-skills
+/plugin marketplace add <đường-dẫn-bản-clone-local-trên-máy-này>
 ```
 
 Lưu ý: kể cả với nguồn local, Claude Code vẫn **copy** file vào
