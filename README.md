@@ -1,6 +1,6 @@
 # thanhtungpfiev-skills
 
-Plugin Claude Code gói ba skill cá nhân dùng chung cho mọi repo.
+Plugin Claude Code gói bốn skill cá nhân dùng chung cho mọi repo.
 
 ## Nó làm gì?
 
@@ -9,8 +9,9 @@ Plugin Claude Code gói ba skill cá nhân dùng chung cho mọi repo.
 | `commit` | Tách thay đổi thành từng commit một ý, viết message theo khung **Problem → Solution → Implications** — ghi lại *vì sao* repo tiến hoá, thứ mà diff không phục hồi được. Kích hoạt khi tạo commit, tách thay đổi, hay sửa message đã viết. |
 | `list-formatting` | Chọn hình thức cho một danh sách trong Markdown: nối ngang bằng `·`, xuống bullet list, hay xếp chồng bằng `<br>` trong ô bảng. Luật quyết định dựa trên độ dài mục dài nhất. |
 | `diagram-rules` | Luật màu, font và kiểm chứng khi vẽ sơ đồ SVG bằng skill `diagram-design`: bảng màu Dracula **một bản tối**, mã màu **gắn cứng theo vai trò**, cấm Georgia vì thiếu dấu tiếng Việt, và cạm bẫy mask khi đổi font. Kèm sẵn file profile để dựng lại skin trên máy mới. |
+| `toc-builder` | Dựng mới hoặc chuẩn hoá khối `## 📑 Mục lục` trong note nhiều chương: bullet list Chương/Hình/Mã màu, mỗi mục là wikilink trỏ heading thật. Kèm hai script kiểm chứng — heading mồ côi, anchor gãy, thứ tự lệch, wikilink gãy toàn file — chạy lại được thay vì tự soi bằng mắt mỗi lần. |
 
-Cả ba đều **không dính quy ước riêng của repo nào**. Phần riêng — ngôn ngữ message, dạng
+Cả bốn đều **không dính quy ước riêng của repo nào**. Phần riêng — ngôn ngữ message, dạng
 subject, đặc thù nội dung — mỗi repo tự khai trong `CLAUDE.md` của nó; skill `commit` đọc
 phần đó và ghép vào khung chung.
 
@@ -30,6 +31,7 @@ Muốn gọi thẳng:
 ```
 /commit
 /list-formatting
+/toc-builder
 ```
 
 ## Cài thế nào?

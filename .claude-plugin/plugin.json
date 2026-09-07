@@ -1,11 +1,11 @@
 {
   "name": "thanhtungpfiev-skills",
-  "description": "Ba skill dùng chung cho mọi repo: viết commit message theo khung Problem → Solution → Implications, chọn đúng hình thức cho danh sách trong Markdown, và luật màu/font khi vẽ sơ đồ SVG",
-  "version": "1.1.0",
+  "description": "Bốn skill dùng chung cho mọi repo: viết commit message theo khung Problem → Solution → Implications, chọn đúng hình thức cho danh sách trong Markdown, luật màu/font khi vẽ sơ đồ SVG, và dựng/chuẩn hoá mục lục note nhiều chương",
+  "version": "1.2.0",
   "author": {
     "name": "Dao Thanh Tung"
   },
   "license": "MIT",
-  "keywords": ["commit", "git", "markdown", "writing", "conventions", "diagram", "svg", "color"],
-  "skills": ["./skills/commit", "./skills/list-formatting", "./skills/diagram-rules"]
+  "keywords": ["commit", "git", "markdown", "writing", "conventions", "diagram", "svg", "color", "toc", "obsidian"],
+  "skills": ["./skills/commit", "./skills/list-formatting", "./skills/diagram-rules", "./skills/toc-builder"]
 }
