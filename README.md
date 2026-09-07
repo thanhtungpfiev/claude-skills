@@ -1,6 +1,6 @@
 # thanhtungpfiev-skills
 
-Plugin Claude Code gói bốn skill cá nhân dùng chung cho mọi repo.
+Plugin Claude Code gói năm skill cá nhân dùng chung cho mọi repo.
 
 ## Nó làm gì?
 
@@ -10,8 +10,9 @@ Plugin Claude Code gói bốn skill cá nhân dùng chung cho mọi repo.
 | `list-formatting` | Chọn hình thức cho một danh sách trong Markdown: nối ngang bằng `·`, xuống bullet list, hay xếp chồng bằng `<br>` trong ô bảng. Luật quyết định dựa trên độ dài mục dài nhất. |
 | `diagram-rules` | Luật màu, font và kiểm chứng khi vẽ sơ đồ SVG bằng skill `diagram-design`: bảng màu Dracula **một bản tối**, mã màu **gắn cứng theo vai trò**, cấm Georgia vì thiếu dấu tiếng Việt, và cạm bẫy mask khi đổi font. Kèm sẵn file profile để dựng lại skin trên máy mới. |
 | `toc-builder` | Dựng mới hoặc chuẩn hoá khối `## 📑 Mục lục` trong note nhiều chương: bullet list Chương/Hình/Mã màu, mỗi mục là wikilink trỏ heading thật. Kèm hai script kiểm chứng — heading mồ côi, anchor gãy, thứ tự lệch, wikilink gãy toàn file — chạy lại được thay vì tự soi bằng mắt mỗi lần. |
+| `raw-to-note` | Chắt lọc một khối dữ liệu thô — chat Teams, tài liệu web/Confluence copy về, transcript Udemy — thành note kiến thức theo khuôn note anh em, rồi **xoá hẳn bản thô**. Vì bản thô không giữ lại, trình tự là luật: chốt định danh nguồn → chọn note đích → viết → kiểm → mới xoá. Phần Claude tự bổ sung nằm trong callout riêng, chỗ nguồn mơ hồ đánh `❓` chứ không đoán hộ. |
 
-Cả bốn đều **không dính quy ước riêng của repo nào**. Phần riêng — ngôn ngữ message, dạng
+Cả năm đều **không dính quy ước riêng của repo nào**. Phần riêng — ngôn ngữ message, dạng
 subject, đặc thù nội dung — mỗi repo tự khai trong `CLAUDE.md` của nó; skill `commit` đọc
 phần đó và ghép vào khung chung.
 
@@ -32,6 +33,7 @@ Muốn gọi thẳng:
 /commit
 /list-formatting
 /toc-builder
+/raw-to-note
 ```
 
 ## Cài thế nào?
