@@ -166,6 +166,13 @@ tag chip — mất chúng thì nền đen phủ kín cả sơ đồ.
 
 # Kiểm chứng trước khi báo xong
 
+0. **Validate XML trước đã — `self_check.py` KHÔNG bắt được file hỏng cấu trúc.** Đã gặp:
+   một lệnh `sed` xoá dòng `<style>@import ...` cũng nuốt luôn thẻ `<defs>` mở nằm cùng
+   dòng đó; 16 file mất thẻ mở mà `self_check.py` vẫn báo `OK` từng file một. Trình duyệt
+   thì bỏ trắng cả hình, không báo lỗi gì. Rẻ nhất là parse thử:
+   `python -c "import xml.etree.ElementTree as E,sys; [E.parse(f) for f in sys.argv[1:]]" *.svg`
+   Dấu hiệu nhận ra qua ảnh render: **nhiều file ra đúng cùng một dung lượng byte** —
+   đó là các trang trắng cùng kích thước, không phải trùng hợp.
 1. `python <thư-mục-skill-diagram-design>/scripts/self_check.py <file>` — chạy được trên
    cả `.html` lẫn `.svg`.
 2. Render soi mắt bằng headless Chrome:
@@ -175,4 +182,18 @@ tag chip — mất chúng thì nền đen phủ kín cả sơ đồ.
 3. Sơ đồ có mã màu thì kiểm luôn: mọi hình khối có class đều phải có `fill` xác định, và
    legend phải phủ đúng những màu hình đó dùng — không thiếu, không thừa.
 4. *Chỉ với `.svg` nhúng ảnh:* render thêm một lần ép light mode
-   (`--blink-settings=preferredColorScheme=1`) để chắc sơ đồ trơ với theme OS.
+   (`--blink-settings=preferredColorScheme=1`) để chắc sơ đồ trơ với theme OS. Hai lần
+   render phải ra **file giống hệt nhau về dung lượng** — lệch byte là còn `@media` đâu đó.
+5. **Đổi cỡ chữ hay đổi stack font thì phải quét tràn chữ bằng lệnh, không soi mắt.** Sang
+   mono cỡ lớn hơn (12px sans → 14px mono) làm chữ rộng thêm khoảng 35%, đủ để tràn khỏi
+   hộp và khỏi mask mà diff không hề lộ. Ước lượng đủ dùng: bề rộng ≈ `len(text) × cỡ chữ ×
+   (0.60 + letter-spacing)`, so với hộp nhỏ nhất chứa điểm neo, chừa 4px mỗi bên; chuẩn hoá
+   NFC trước khi đếm ký tự nếu không tiếng Việt bị đếm dôi. Chữ tràn **mask** còn tệ hơn
+   tràn hộp: nét mũi tên xuyên qua giữa chữ.
+
+## Khi buộc phải hạ cỡ chữ
+
+Ngân sách chữ hết chỗ thì **rút gọn câu chữ trước, hạ cỡ sau**. Riêng chuỗi nội dung dài
+(một scenario, một câu ví dụ) thì giữ 12px là chấp nhận được — nó là *nội dung*, không phải
+*tên node*. Đừng bao giờ hạ cỡ chữ đỏ `#ff5555` xuống dưới 11px để nhét vừa: đổi màu, hoặc
+để màu ở viền và nhãn tag còn chữ thì trung tính.
